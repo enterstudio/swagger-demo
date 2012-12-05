@@ -1,0 +1,98 @@
+{
+	"apiVersion": "1.0",
+	"swaggerVersion": "1.1",
+	"basePath": "http://localhost:8000/api",
+	"resourcePath": "/meetup",
+	"apis": [
+		{
+			"path": "/meetup",
+			"description": "search and create methods for the meetup system",
+			"operations": [
+				{
+					"httpMethod": "POST",
+					"summary": "creates a meetup",
+					"notes": "you need to be authenticated to do this!",
+					"responseClass":"void",
+					"nickname":"addMeetup",
+					"parameters": [
+						{
+							"name": "body",
+							"description": "the meetup to add",
+							"paramType": "body",
+							"required": true,
+							"allowMultiple": false,
+							"dataType": "Meetup"
+						}
+					]
+				},
+				{
+					"httpMethod": "GET",
+					"summary": "searches meetups",
+					"notes": "you will find great meetups here",
+					"responseClass": "List[Meetup]",
+					"nickname": "findMeetups",
+					"parameters": [
+						{
+							"name": "title",
+							"description": "title of meetup to search for",
+							"paramType": "query",
+							"required": false,
+							"allowMultiple": false,
+							"dataType": "string"
+						},
+						{
+							"name": "tag",
+							"description": "tag of meetup to search for",
+							"paramType": "query",
+							"required": false,
+							"allowMultiple": true,
+							"dataType": "string"
+						},
+						{
+							"name": "active",
+							"description": "searches for active meetups only",
+							"paramType": "query",
+							"required": false,
+							"allowMultiple": false,
+							"dataType": "boolean",
+							"defaultValue": "true",
+							"allowableValues": {
+								"valueType": "LIST",
+								"values": [
+									"true","false"
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"models": {
+		"Meetup": {
+			"id": "Meetup",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"tags": {
+					"type": "Array",
+					"items": {
+						"$ref": "Tag"
+					}
+				},
+				"active": {
+					"type": "boolean"
+				}
+			}
+		},
+		"Tag": {
+			"id": "Tag",
+			"properties": {
+				"name": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

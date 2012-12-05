@@ -1,0 +1,95 @@
+package {{package}}
+
+{{#imports}}import {{import}}
+{{/imports}}
+import services._
+import com.wordnik.util.perf._
+import com.wordnik.swagger.core.ApiPropertiesReader
+
+import org.scalatra.{ TypedParamSupport, ScalatraServlet }
+import org.scalatra.swagger._
+import org.json4s._
+import org.json4s.JsonDSL._
+import org.scalatra.json.{JValueResult, NativeJsonSupport}
+
+import scala.collection.JavaConverters._
+
+class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet 
+    with TypedParamSupport 
+    with NativeJsonSupport 
+    with JValueResult 
+    with SwaggerSupport
+    with SwaggerDatatypeConversionSupport {
+  protected implicit val jsonFormats: Formats = DefaultFormats
+
+  protected val applicationDescription: String = "{{className}}"
+  override protected val applicationName: Option[String] = Some("{{baseName}}")
+
+  def swaggerToModel(cls: Class[_]) = {
+    val docObj = ApiPropertiesReader.read(cls)
+    val name = docObj.getName
+    val fields = for (field <- docObj.getFields.asScala.filter(d => d.paramType != null))
+      yield (field.name -> ModelField(field.name, field.notes, DataType(field.paramType)))
+
+    Model(name, name, fields.toMap)
+  }
+
+  {{#requiredModels}}
+  models = Map(swaggerToModel(classOf[{{{requiredModels}}}]))
+  {{/requiredModels}}
+
+  before() {
+    contentType = formats("json")
+    response.headers += ("Access-Control-Allow-Origin" -> "*")
+  }
+{{#operations}}
+{{#operation}}
+  {{newline}}
+  {{httpMethod}}("{{path}}",
+    summary("{{{summary}}}"),
+    nickname("{{nickname}}"),
+    responseClass("{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}void{{/returnType}}"),
+    endpoint("{{basePart}}"),
+    notes("{{{notes}}}"),
+    parameters(
+      {{#allParams}}
+      {{#queryParameter}}
+      Parameter(name = "{{paramName}}", 
+        description = "{{{description}}}",
+        paramType = ParamType.Query,
+        required = {{required}},
+        allowMultiple = {{allowMultiple}},
+        {{#allowableValues}}allowableValues = {{{allowableValues}}},{{newline}}{{/allowableValues}}
+        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
+        dataType = DataType("{{dataType}}"))
+      {{/queryParameter}}
+      {{#pathParameter}}
+      Parameter(name = "{{paramName}}", 
+        description = "{{{description}}}",
+        dataType = DataType.String,
+        {{#allowableValues}}allowableValues = {{{allowableValues}}},{{newline}}{{/allowableValues}}
+        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
+        paramType = ParamType.Path)
+      {{/pathParameter}}
+      {{#headerParameter}}
+      Parameter(name = "{{paramName}}",
+        description = "{{{description}}}",
+        dataType = DataType("{{dataType}}"),
+        paramType = ParamType.Header)
+      {{/headerParameter}}
+      {{#bodyParameter}}
+      Parameter(name = "{{paramName}}",
+        description = "{{{description}}}",
+        dataType = DataType("{{dataType}}"),
+        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
+        paramType = ParamType.Body)
+      {{/bodyParameter}}{{#hasMore}},{{/hasMore}}
+      {{/allParams}}
+      ))
+  {
+    // do something magic!
+{{> service_call}}
+  }
+{{/operation}}
+{{/operations}}
+}
