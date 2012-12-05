@@ -37,6 +37,7 @@ object ScalatraServerGenerator extends BasicScalaGenerator {
 
   override def apiPackage = Some("apis")
 
+
   // supporting classes
   override def supportingFiles = List(
     ("README.mustache", outputFolder, "README.md"),
