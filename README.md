@@ -1,6 +1,14 @@
 #### Swagger Demo
 
 ### Setup
+* Install scala 2.9.1 and put `scala` in your $PATH!  Scala is here:
+
+```
+http://www.scala-lang.org/sites/default/files/linuxsoft_archives/downloads/distrib/files/scala-2.9.1-1.tgz
+```
+
+This may work with newer versions of scala but please use 2.9.1 for this demo.
+
 * Get swagger-codegen and other dependencies via maven:
 
 ```
