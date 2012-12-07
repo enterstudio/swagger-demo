@@ -47,7 +47,7 @@ There is no logic in the server, so you can enable the mustache `partial` under 
 
 Now regenerate the server and you have real functionality:
 
-You can finally generate a wordnik-api server:
+You can finally generate a wordnik-api server (disable the partial from above, since I didn't write all the service methods):
 
 ```
 ./bin/runscala.sh src/main/scripts/WordnikServerGenerator.scala -DfileMap=src/main/templates/wordnik-api/ http://localhost:8080/api/resources.json
