@@ -10,9 +10,9 @@ import scala.reflect.BeanProperty
 case class {{classname}} (
   {{#vars}}
 
-  {{#description}}/* {{description}} */
+  {{#description}}/* {{description}} */  
   {{/description}}
-  {{name}}: {{datatype}}{{#hasMore}},{{newline}}  {{/hasMore}}
+  {{name}}: {{^required}}Option[{{/required}}{{datatype}}{{^required}}]{{/required}}{{#hasMore}},{{newline}}  {{/hasMore}}
   {{/vars}}
 )
 {{/model}}

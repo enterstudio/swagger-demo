@@ -17,41 +17,39 @@
             },
             {
               "name":"includeDuplicates",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"Show duplicate examples from different sources",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
             {
               "name":"skip",
-              "defaultValue":"0",
+              "defaultValue":0,
               "description":"Results to skip",
               "required":false,
               "dataType":"int",
@@ -60,7 +58,7 @@
             },
             {
               "name":"limit",
-              "defaultValue":"5",
+              "defaultValue":5,
               "description":"Maximum number of results to return",
               "required":false,
               "dataType":"int",
@@ -97,31 +95,28 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
-                ],
-                "valueType":"LIST"
+                  false,
+                  true
+                ]
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
             {
               "name":"includeSuggestions",
-              "defaultValue":"true",
+              "defaultValue":true,
               "description":"Return suggestions (for correct spelling, case variants, etc.)",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
@@ -159,7 +154,7 @@
             },
             {
               "name":"limit",
-              "defaultValue":"200",
+              "defaultValue":200,
               "description":"Maximum number of results to return",
               "required":false,
               "dataType":"int",
@@ -171,7 +166,6 @@
               "description":"CSV list of part-of-speech types",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -209,18 +203,17 @@
             },
             {
               "name":"includeRelated",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"Return related words with definitions",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "true",
-                  "false"
+                  true,
+                  false
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -229,7 +222,6 @@
               "description":"Source dictionary to return definitions from.  If 'all' is received, results are returned from all sources. If multiple values are received (e.g. 'century,wiktionary'), results are returned from the first specified dictionary that has definitions. If left blank, results are returned from the first dictionary that has definitions. By default, dictionaries are searched in this order: ahd, wiktionary, webster, century, wordnet",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "all",
                   "ahd",
@@ -246,31 +238,29 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
             {
               "name":"includeTags",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"Return a closed set of XML tags in response",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
@@ -312,18 +302,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             }
@@ -357,18 +346,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -377,7 +365,6 @@
               "description":"Limits the total results per type of relationship type",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "synonym",
                   "antonym",
@@ -404,7 +391,7 @@
             },
             {
               "name":"limitPerRelationshipType",
-              "defaultValue":"10",
+              "defaultValue":10,
               "description":"Restrict to the supplied relatinship types",
               "required":false,
               "allowableValues":{
@@ -447,18 +434,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return a correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -467,7 +453,6 @@
               "description":"Get from a single dictionary",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "ahd",
                   "century",
@@ -488,7 +473,6 @@
               "description":"Text pronunciation type",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "ahd",
                   "arpabet",
@@ -540,10 +524,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return a correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
-              "dataType":"string",
+              "allowableValues": {
+                "values":[
+                  false,
+                  true
+                ],
+                "valueType":"LIST"
+              },
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -552,6 +543,17 @@
               "description":"Get from a single dictionary. Valid options: ahd, century, wiktionary, webster, and wordnet.",
               "required":false,
               "dataType":"string",
+              "allowableValues":{
+                "values":[
+                  "all",
+                  "ahd",
+                  "century",
+                  "wiktionary",
+                  "webster",
+                  "wordnet"
+                ],
+                "valueType":"LIST"
+              },
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -594,10 +596,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
-              "dataType":"string",
+              "dataType":"boolean",
+              "allowableValues":{
+                "values":[
+                  false,
+                  true
+                ],
+                "valueType":"LIST"
+              },
               "allowMultiple":false,
               "paramType":"query"
             },
@@ -653,7 +662,7 @@
             },
             {
               "name":"limit",
-              "defaultValue":"5",
+              "defaultValue":5,
               "description":"Maximum number of results to return",
               "required":false,
               "dataType":"int",
@@ -662,7 +671,7 @@
             },
             {
               "name":"wlmi",
-              "defaultValue":"0",
+              "defaultValue":0,
               "description":"Minimum WLMI for the phrase",
               "required":false,
               "dataType":"int",
@@ -671,18 +680,17 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             }
@@ -719,14 +727,13 @@
               "description":"If true will try to return the correct word root ('cats' -> 'cat'). If false returns exactly what was requested.",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
               "paramType":"query"
             }
@@ -764,11 +771,18 @@
             },
             {
               "name":"useCanonical",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"Use the canonical form of the word",
               "required":false,
-              "dataType":"string",
+              "dataType":"boolean",
               "allowMultiple":false,
+              "allowableValues":{
+                "values":[
+                  false,
+                  true
+                ],
+                "valueType":"LIST"
+              },
               "paramType":"query"
             },
             {
@@ -803,13 +817,16 @@
     "Syllable":{
       "properties":{
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "seq":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "type":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Syllable"
@@ -817,10 +834,12 @@
     "AudioType":{
       "properties":{
         "id":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "name":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"AudioType"
@@ -831,10 +850,12 @@
           "type":"Array",
           "items":{
             "$ref":"FacetValue"
-          }
+          },
+          "required":true
         },
         "name":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Facet"
@@ -853,7 +874,8 @@
     "Note":{
       "properties":{
         "noteType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "appliesTo":{
           "type":"Array",
@@ -862,7 +884,8 @@
           }
         },
         "value":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "pos":{
           "type":"int"
@@ -870,24 +893,14 @@
       },
       "id":"Note"
     },
-    "FacetValue":{
-      "properties":{
-        "count":{
-          "type":"long"
-        },
-        "value":{
-          "type":"string"
-        }
-      },
-      "id":"FacetValue"
-    },
     "Related":{
       "properties":{
         "label1":{
           "type":"string"
         },
         "relationshipType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "label2":{
           "type":"string"
@@ -897,6 +910,7 @@
         },
         "words":{
           "type":"Array",
+          "required":true,
           "items":{
             "type":"string"
           }
@@ -913,11 +927,11 @@
     "WordObject":{
       "properties":{
         "id":{
-          "type":"long",
-          "required":true
+          "type":"long"
         },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "originalWord":{
           "type":"string"
@@ -940,7 +954,8 @@
     "ScoredWord":{
       "properties":{
         "position":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "id":{
           "type":"long"
@@ -952,25 +967,31 @@
           "type":"string"
         },
         "wordType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "score":{
-          "type":"float"
+          "type":"float",
+          "required":true
         },
         "sentenceId":{
-          "type":"long"
+          "type":"long",
+          "required":true
         },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "stopword":{
-          "type":"boolean"
+          "type":"boolean",
+          "required":true
         },
         "baseWordScore":{
           "type":"double"
         },
         "partOfSpeech":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"ScoredWord"
@@ -978,10 +999,12 @@
     "Citation":{
       "properties":{
         "cite":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "source":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Citation"
@@ -1027,16 +1050,19 @@
           "type":"string"
         },
         "provider":{
-          "type":"ContentProvider"
+          "type":"ContentProvider",
+          "required":true
         },
         "year":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "rating":{
           "type":"float"
         },
         "documentId":{
-          "type":"long"
+          "type":"long",
+          "required":true
         },
         "url":{
           "type":"string"
@@ -1059,13 +1085,15 @@
           }
         },
         "display":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "rating":{
           "type":"int"
         },
         "documentMetadataId":{
-          "type":"long"
+          "type":"long",
+          "required":true
         }
       },
       "id":"Sentence"
@@ -1073,7 +1101,8 @@
     "ExampleUsage":{
       "properties":{
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"ExampleUsage"
@@ -1081,10 +1110,12 @@
     "ContentProvider":{
       "properties":{
         "id":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "name":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"ContentProvider"
@@ -1104,23 +1135,25 @@
           "type":"string"
         },
         "audioType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "id":{
-          "type":"long",
-          "required":true
+          "type":"long"
         },
         "duration":{
           "type":"double"
         },
         "attributionText":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "createdBy":{
           "type":"string"
         },
         "description":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "createdAt":{
           "type":"Date"
@@ -1142,11 +1175,13 @@
         "count":{
           "type":"long"
         },
-        "gram2":{
-          "type":"string"
-        },
         "gram1":{
-          "type":"string"
+          "type":"string",
+          "required":true
+        },
+        "gram2":{
+          "type":"string",
+          "required":true
         },
         "wlmi":{
           "type":"double"
@@ -1160,10 +1195,12 @@
     "Label":{
       "properties":{
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "type":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Label"
@@ -1171,10 +1208,12 @@
     "Frequency":{
       "properties":{
         "count":{
-          "type":"long"
+          "type":"long",
+          "required":true
         },
         "year":{
-          "type":"int"
+          "type":"int",
+          "required":true
         }
       },
       "id":"Frequency"
@@ -1182,19 +1221,19 @@
     "FrequencySummary":{
       "properties":{
         "unknownYearCount":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "totalCount":{
           "type":"long"
         },
-        "frequencyString":{
-          "type":"string"
-        },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "frequency":{
           "type":"Array",
+          "required":true,
           "items":{
             "$ref":"Frequency"
           }
@@ -1208,10 +1247,12 @@
           "type":"string"
         },
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "sourceDictionary":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "citations":{
           "type":"Array",
@@ -1253,7 +1294,8 @@
           "type":"string"
         },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "notes":{
           "type":"Array",
@@ -1268,17 +1310,36 @@
           }
         },
         "partOfSpeech":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Definition"
+    },
+    "Root":{
+      "properties":{
+        "id":{
+          "type":"long",
+          "required":true
+        },
+        "name":{
+          "type":"string"
+        },
+        "categories":{
+          "type":"Array",
+          "items":{
+            "$ref":"Category"
+          }
+        }
+      },
+      "id":"Root"
     },
     "PartOfSpeech":{
       "properties":{
         "roots":{
           "type":"Array",
           "items":{
-            "$ref":"root"
+            "$ref":"Root"
           }
         },
         "storageAbbr":{
@@ -1290,7 +1351,7 @@
         "allCategories":{
           "type":"Array",
           "items":{
-            "$ref":"category"
+            "$ref":"Category"
           }
         }
       },
@@ -1299,13 +1360,16 @@
     "TextPron":{
       "properties":{
         "raw":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "seq":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "rawType":{
-          "type":"string"
+          "type":"string",
+          "required":false
         }
       },
       "id":"TextPron"

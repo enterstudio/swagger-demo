@@ -332,12 +332,13 @@
       "properties":{
         "id":{
           "type":"long",
-          "required":false
+          "required":true
         },
         "permalink":{
           "type":"string"
         },
         "name":{
+          "required":true,
           "type":"string"
         },
         "createdAt":{
@@ -356,6 +357,7 @@
           "type":"long"
         },
         "description":{
+          "required":true,
           "type":"string"
         },
         "numberWordsInList":{
@@ -370,10 +372,10 @@
     "WordListWord":{
       "properties":{
         "id":{
-          "type":"long",
-          "required":true
+          "type":"long"
         },
         "word":{
+          "required":true,
           "type":"string"
         },
         "username":{
@@ -397,7 +399,8 @@
     "StringValue":{
       "properties":{
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"StringValue"

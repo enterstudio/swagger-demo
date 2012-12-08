@@ -17,14 +17,13 @@
             },
             {
               "name":"caseSensitive",
-              "defaultValue":"true",
+              "defaultValue":true,
               "description":"Search case sensitive",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "true",
-                  "false"
+                  true,
+                  false
                 ],
                 "valueType":"LIST"
               },
@@ -37,7 +36,6 @@
               "description":"Only include these comma-delimited parts of speech",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -87,9 +85,8 @@
               "description":"Minimum corpus frequency for terms",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -102,9 +99,8 @@
               "description":"Maximum corpus frequency for terms",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -117,9 +113,8 @@
               "description":"Minimum number of dictionary entries for words returned",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -132,9 +127,8 @@
               "description":"Maximum dictionary definition count",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -147,9 +141,8 @@
               "description":"Minimum word length",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1024.0,
-                "min":0.0,
+                "max":1024,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -162,9 +155,8 @@
               "description":"Maximum word length",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1024.0,
-                "min":0.0,
+                "max":1024,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -177,9 +169,8 @@
               "description":"Results to skip",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1000.0,
-                "min":0.0,
+                "max":1000,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -192,9 +183,8 @@
               "description":"Maximum number of results to return",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1000.0,
-                "min":1.0,
+                "max":1000,
+                "min":1,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -264,7 +254,6 @@
               "description":"Only include these comma-delimited source dictionaries",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "ahd",
                   " century",
@@ -283,13 +272,12 @@
               "description":"Exclude these comma-delimited source dictionaries",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "ahd",
-                  " century",
-                  " wiktionary",
-                  " webster",
-                  " wordnet"
+                  "century",
+                  "wiktionary",
+                  "webster",
+                  "wordnet"
                 ],
                 "valueType":"LIST"
               },
@@ -319,9 +307,8 @@
               "description":"Minimum corpus frequency for terms",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -334,9 +321,8 @@
               "description":"Maximum corpus frequency for terms",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":"Infinity",
-                "min":0.0,
+                "max":2147483647,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -349,9 +335,8 @@
               "description":"Minimum word length",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1024.0,
-                "min":0.0,
+                "max":1024,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -364,9 +349,8 @@
               "description":"Maximum word length",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1024.0,
-                "min":0.0,
+                "max":1024,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -378,7 +362,6 @@
               "description":"Expand terms",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "synonym",
                   "hypernym"
@@ -391,14 +374,13 @@
             },
             {
               "name":"includeTags",
-              "defaultValue":"false",
+              "defaultValue":false,
               "description":"Return a closed set of XML tags in response",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
@@ -411,7 +393,6 @@
               "description":"Attribute to sort by",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "alpha",
                   "count",
@@ -428,7 +409,6 @@
               "description":"Sort direction",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "asc",
                   "desc"
@@ -445,9 +425,8 @@
               "description":"Results to skip",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1000.0,
-                "min":0.0,
+                "max":1000,
+                "min":0,
                 "valueType":"RANGE"
               },
               "dataType":"string",
@@ -460,9 +439,8 @@
               "description":"Maximum number of results to return",
               "required":false,
               "allowableValues":{
-                "valueType":"RANGE",
-                "max":1000.0,
-                "min":1.0,
+                "max":1000,
+                "min":1,
                 "valueType":"RANGE"
               },
               "dataType":"int",
@@ -491,14 +469,13 @@
           "parameters":[
             {
               "name":"hasDictionaryDef",
-              "defaultValue":"true",
+              "defaultValue":true,
               "description":"Only return words with dictionary definitions",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
@@ -511,7 +488,6 @@
               "description":"CSV part-of-speech values to include",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -552,7 +528,6 @@
               "description":"CSV part-of-speech values to exclude",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -647,7 +622,6 @@
               "description":"Attribute to sort by",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "alpha",
                   "count"
@@ -663,7 +637,6 @@
               "description":"Sort direction",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "asc",
                   "desc"
@@ -709,14 +682,13 @@
           "parameters":[
             {
               "name":"hasDictionaryDef",
-              "defaultValue":"true",
+              "defaultValue":true,
               "description":"Only return words with dictionary definitions",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
-                  "false",
-                  "true"
+                  false,
+                  true
                 ],
                 "valueType":"LIST"
               },
@@ -729,7 +701,6 @@
               "description":"CSV part-of-speech values to include",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -770,7 +741,6 @@
               "description":"CSV part-of-speech values to exclude",
               "required":false,
               "allowableValues":{
-                "valueType":"LIST",
                 "values":[
                   "noun",
                   "adjective",
@@ -944,7 +914,8 @@
     "Note":{
       "properties":{
         "noteType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "appliesTo":{
           "type":"Array",
@@ -953,7 +924,8 @@
           }
         },
         "value":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "pos":{
           "type":"int"
@@ -975,14 +947,45 @@
       },
       "id":"DefinitionSearchResults"
     },
+    "Related":{
+      "properties":{
+        "label1":{
+          "type":"string"
+        },
+        "relationshipType":{
+          "type":"string",
+          "required":true
+        },
+        "label2":{
+          "type":"string"
+        },
+        "label3":{
+          "type":"string"
+        },
+        "words":{
+          "type":"Array",
+          "required":true,
+          "items":{
+            "type":"string"
+          }
+        },
+        "gram":{
+          "type":"string"
+        },
+        "label4":{
+          "type":"string"
+        }
+      },
+      "id":"Related"
+    },
     "WordObject":{
       "properties":{
         "id":{
-          "type":"long",
-          "required":true
+          "type":"long"
         },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "originalWord":{
           "type":"string"
@@ -1002,42 +1005,15 @@
       },
       "id":"WordObject"
     },
-    "Related":{
-      "properties":{
-        "label1":{
-          "type":"string"
-        },
-        "relationshipType":{
-          "type":"string"
-        },
-        "label2":{
-          "type":"string"
-        },
-        "label3":{
-          "type":"string"
-        },
-        "words":{
-          "type":"Array",
-          "items":{
-            "type":"string"
-          }
-        },
-        "gram":{
-          "type":"string"
-        },
-        "label4":{
-          "type":"string"
-        }
-      },
-      "id":"Related"
-    },
     "Citation":{
       "properties":{
         "cite":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "source":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Citation"
@@ -1106,7 +1082,8 @@
     "ExampleUsage":{
       "properties":{
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"ExampleUsage"
@@ -1114,10 +1091,12 @@
     "ContentProvider":{
       "properties":{
         "id":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "name":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"ContentProvider"
@@ -1125,10 +1104,12 @@
     "Label":{
       "properties":{
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "type":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Label"
@@ -1156,10 +1137,12 @@
           "type":"string"
         },
         "text":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "sourceDictionary":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "citations":{
           "type":"Array",
@@ -1201,7 +1184,8 @@
           "type":"string"
         },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "notes":{
           "type":"Array",
@@ -1216,7 +1200,8 @@
           }
         },
         "partOfSpeech":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"Definition"
@@ -1247,13 +1232,16 @@
     "TextPron":{
       "properties":{
         "raw":{
-          "type":"string"
+          "type":"string",
+          "required":true
         },
         "seq":{
-          "type":"int"
+          "type":"int",
+          "required":true
         },
         "rawType":{
-          "type":"string"
+          "type":"string",
+          "required":true
         }
       },
       "id":"TextPron"

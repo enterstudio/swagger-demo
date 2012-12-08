@@ -16,40 +16,6 @@
               "paramType":"path"
             },
             {
-              "name":"password",
-              "description":"The user's password",
-              "required":true,
-              "dataType":"string",
-              "allowMultiple":false,
-              "paramType":"query"
-            }
-          ],
-          "summary":"Authenticates a User",
-          "httpMethod":"GET",
-          "errorResponses":[
-            {
-              "reason":"Account not available.",
-              "code":403
-            },
-            {
-              "reason":"User not found.",
-              "code":404
-            }
-          ],
-          "nickname":"authenticate",
-          "responseClass":"AuthenticationToken"
-        },
-        {
-          "parameters":[
-            {
-              "name":"username",
-              "description":"A confirmed Wordnik username",
-              "required":true,
-              "dataType":"string",
-              "allowMultiple":false,
-              "paramType":"path"
-            },
-            {
               "description":"The user's password",
               "required":true,
               "dataType":"string",
@@ -200,9 +166,11 @@
           "type":"long"
         },
         "username":{
+          "required":true,
           "type":"string"
         },
         "email":{
+          "required":true,
           "type":"string"
         },
         "status":{
@@ -211,13 +179,12 @@
         "faceBookId":{
           "type":"string"
         },
-        "userName":{
-          "type":"string"
-        },
         "displayName":{
+          "required":true,
           "type":"string"
         },
         "password":{
+          "required":"false",
           "type":"string"
         }
       },
@@ -226,21 +193,27 @@
     "ApiTokenStatus":{
       "properties":{
         "valid":{
+          "required":true,
           "type":"boolean"
         },
         "token":{
+          "required":true,
           "type":"string"
         },
         "resetsInMillis":{
+          "required":true,
           "type":"long"
         },
         "remainingCalls":{
+          "required":true,
           "type":"long"
         },
         "expiresInMillis":{
+          "required":true,
           "type":"long"
         },
         "totalRequests":{
+          "required":"false",
           "type":"long"
         }
       },
@@ -249,9 +222,11 @@
     "AuthenticationToken":{
       "properties":{
         "token":{
+          "required":true,
           "type":"string"
         },
         "userId":{
+          "required":true,
           "type":"long"
         },
         "userSignature":{
@@ -264,12 +239,13 @@
       "properties":{
         "id":{
           "type":"long",
-          "required":false
+          "required":true
         },
         "permalink":{
           "type":"string"
         },
         "name":{
+          "required":true,
           "type":"string"
         },
         "createdAt":{
@@ -288,6 +264,7 @@
           "type":"long"
         },
         "description":{
+          "required":true,
           "type":"string"
         },
         "numberWordsInList":{
@@ -302,10 +279,10 @@
     "WordListWord":{
       "properties":{
         "id":{
-          "type":"long",
-          "required":true
+          "type":"long"
         },
         "word":{
+          "required":true,
           "type":"string"
         },
         "username":{

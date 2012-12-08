@@ -66,6 +66,7 @@ class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet
       {{#pathParameter}}
       Parameter(name = "{{paramName}}", 
         description = "{{{description}}}",
+        required = true,
         dataType = DataType.String,
         {{#allowableValues}}allowableValues = {{{allowableValues}}},{{newline}}{{/allowableValues}}
         defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
@@ -88,7 +89,6 @@ class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-{{!> service_call}}
   }
 {{/operation}}
 {{/operations}}
