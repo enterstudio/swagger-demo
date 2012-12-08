@@ -40,13 +40,16 @@ object WordnikServerGenerator extends BasicScalaGenerator {
   override def toDefaultValue(datatype: String, v: String): Option[String] = {
     if (v != "" && v != null) {
       datatype match {
+        case "boolean" => Some("\"" + v + "\"")
         case "int" => Some("\"" + v + "\"")
         case "long" => Some("\"" + v + "\"")
         case "double" => Some("\"" + v + "\"")
         case x if x == "string" || x == "String" => {
           v match {
             case e: String => Some("\"" + v + "\"")
-            case _ => None
+            case _ => {
+              None
+            }
           }
         }
         case _ => None
@@ -64,6 +67,28 @@ object WordnikServerGenerator extends BasicScalaGenerator {
     ("ServletApp.mustache", destinationDir, "ServletApp.scala"),
     ("project/build.properties", outputFolder, "project/build.properties"),
     ("project/plugins.sbt", outputFolder, "project/plugins.sbt"))
+
+  override def processModelMap(m: Map[String, AnyRef]): Map[String, AnyRef] = {
+    val mutable = scala.collection.mutable.Map() ++ m
+    val vars = mutable("vars").asInstanceOf[ListBuffer[AnyRef]]
+
+    vars.foreach(m => {
+      val modelMap = m.asInstanceOf[HashMap[String,String]]
+      modelMap.contains("required") match {
+        case true => {
+          modelMap("required") match {
+            case "false" => {
+              modelMap.remove("required")
+            }
+            case _ =>
+          }
+        }
+        case false => 
+      }
+    })
+
+    mutable.toMap
+  }
 
   override def processApiMap(m: Map[String, AnyRef]): Map[String, AnyRef] = {
     val mutable = scala.collection.mutable.Map() ++ m
