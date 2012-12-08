@@ -1,6 +1,14 @@
 #### Swagger Demo
 
 ### Setup
+* Install scala 2.9.1 and put `scala` in your $PATH!  Scala is here:
+
+```
+http://www.scala-lang.org/sites/default/files/linuxsoft_archives/downloads/distrib/files/scala-2.9.1-1.tgz
+```
+
+This may work with newer versions of scala but please use 2.9.1 for this demo.
+
 * Get swagger-codegen and other dependencies via maven:
 
 ```
@@ -47,7 +55,7 @@ There is no logic in the server, so you can enable the mustache `partial` under 
 
 Now regenerate the server and you have real functionality:
 
-You can finally generate a wordnik-api server:
+You can finally generate a wordnik-api server (disable the partial from above, since I didn't write all the service methods):
 
 ```
 ./bin/runscala.sh src/main/scripts/WordnikServerGenerator.scala -DfileMap=src/main/templates/wordnik-api/ http://localhost:8080/api/resources.json
