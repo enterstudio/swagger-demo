@@ -1,0 +1,1 @@
+./bin/runscala.sh com.wordnik.swagger.codegen.BasicScalaGenerator http://localhost:8000/api/resources.json
