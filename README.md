@@ -31,7 +31,7 @@ Now you can generate the objective-c client:
 
 You will see the client written to the `client` folder.  You can modify the ObjectiveCClientGenerator script to change the behavior of the generator, or the templates, which live in the `src/main/templates/client` folder.
 
-You can now generate the scalatra server:
+#### You can now generate the scalatra server
 
 ```
 ./bin/runscala.sh src/main/scripts/ScalatraServerGenerator.scala http://localhost:8000/api/resources.json
@@ -47,6 +47,8 @@ container:start
 
 The server is listening on port 8080, you can update the discovery URL in the swagger-ui (jetty is still running!) and execute commands against the server.
 
+#### You can add encapsulate a service class, to avoid the codegen from wiping out business logic
+
 There is no logic in the server, so you can enable the mustache `partial` under `// do something magic!`:
 
 ```
@@ -54,6 +56,36 @@ There is no logic in the server, so you can enable the mustache `partial` under 
 ```
 
 Now regenerate the server and you have real functionality:
+
+```
+./bin/runscala.sh src/main/scripts/ScalatraServerGenerator.scala http://localhost:8000/api/resources.json
+```
+
+#### You can generate a scala client
+
+```
+./bin/runscala.sh com.wordnik.swagger.codegen.BasicScalaGenerator http://localhost:8000/api/resources.json
+```
+
+Which is written to `generated-files/scala` per the default scala template from the codegen, [here](https://github.com/wordnik/swagger-codegen/blob/master/src/main/scala/com/wordnik/swagger/codegen/BasicScalaGenerator.scala).
+
+#### You can generate a server for node.js
+
+```
+./bin/runscala.sh src/main/scripts/NodeServerGenerator.scala http://localhost:8000/api/resources.json
+```
+
+Which can be run as follows:
+
+```
+cd nodejs
+npm install
+node Apps/main.js
+```
+
+Which is now available via `http://localhost:8002/api-docs.json`
+
+#### A real server example
 
 You can finally generate a wordnik-api server (disable the partial from above, since I didn't write all the service methods):
 
