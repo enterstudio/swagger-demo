@@ -5,12 +5,12 @@
 	"resourcePath": "/meetup",
 	"apis": [
 		{
-			"path": "/meetup",
+			"path": "/meetup.{format}",
 			"description": "search and create methods for the meetup system",
 			"operations": [
 				{
 					"httpMethod": "POST",
-					"summary": "creates a meetup",
+					"summary": "creates a meetup at a BASE event",
 					"notes": "you need to be authenticated to do this!",
 					"responseClass":"void",
 					"nickname":"addMeetup",

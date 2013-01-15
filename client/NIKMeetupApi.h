@@ -16,7 +16,7 @@
 
 /**
 
- creates a meetup
+ creates a meetup at a BASE event
  you need to be authenticated to do this!
  @param body the meetup to add
  */

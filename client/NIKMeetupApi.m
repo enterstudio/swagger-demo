@@ -35,7 +35,7 @@ static NSString * basePath = @"http://localhost:8000/api";
 -(void) addMeetupWithCompletionBlock:(NIKMeetup*) body
         completionHandler: (void (^)(NSError* error))completionBlock{
 
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup", basePath];
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup.{format}", basePath];
 
     // remove format in URL if needed
     if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
@@ -90,7 +90,7 @@ static NSString * basePath = @"http://localhost:8000/api";
         active:(NSNumber*) active
         completionHandler: (void (^)(NSArray* output, NSError* error))completionBlock{
 
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup", basePath];
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup.{format}", basePath];
 
     // remove format in URL if needed
     if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
@@ -132,7 +132,7 @@ static NSString * basePath = @"http://localhost:8000/api";
 
         completionHandler:(void (^)(NSError *))completionBlock{
 
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup", basePath];
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup.{format}", basePath];
 
     // remove format in URL if needed
     if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
@@ -189,7 +189,7 @@ active:(NSNumber*) active
 
         completionHandler:(void (^)(NSString*, NSError *))completionBlock{
 
-    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup", basePath];
+    NSMutableString* requestUrl = [NSMutableString stringWithFormat:@"%@/meetup.{format}", basePath];
 
     // remove format in URL if needed
     if ([requestUrl rangeOfString:@".{format}"].location != NSNotFound)
