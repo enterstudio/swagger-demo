@@ -31,4 +31,4 @@
     })
     {{/allParams}}
 
-    Profile("{{baseName}}{{path}} ({{httpMethod}})", {{className}}Service.{{nickname}}({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}), true)
+    {{className}}Service.{{nickname}}({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}})

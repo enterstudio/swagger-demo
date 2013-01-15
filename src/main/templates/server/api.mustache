@@ -3,7 +3,6 @@ package {{package}}
 {{#imports}}import {{import}}
 {{/imports}}
 import services._
-import com.wordnik.util.perf._
 import com.wordnik.swagger.core.ApiPropertiesReader
 
 import org.scalatra.{ TypedParamSupport, ScalatraServlet }
@@ -89,8 +88,7 @@ class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-    "nothing to see!"
-    {{ >service_call}}
+    {{! >service_call}}  // disabled for now
   }
 {{/operation}}
 {{/operations}}
