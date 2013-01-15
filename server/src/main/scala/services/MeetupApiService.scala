@@ -5,7 +5,7 @@ import models._
 object MeetupApiService {
 	var meetups = List(
 		Meetup("another scala startup", List(Tag("software"), Tag("programming")), true),
-		Meetup("cooking meetup", List(Tag("cooking"), Tag("drinking")), true)
+		Meetup("cooking meetup", List(Tag("cooking"), Tag("drinking"), Tag("dancing")), true)
 	)
 
 	def addMeetup(meetup: Meetup) = {

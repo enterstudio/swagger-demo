@@ -2,7 +2,6 @@ package apis
 
 import models.Meetup
 import services._
-import com.wordnik.util.perf._
 import com.wordnik.swagger.core.ApiPropertiesReader
 
 import org.scalatra.{ TypedParamSupport, ScalatraServlet }
@@ -40,7 +39,7 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
   }
 
   post("/",
-    summary("creates a meetup"),
+    summary("creates a meetup at a BASE event"),
     nickname("addMeetup"),
     responseClass("void"),
     endpoint(""),
@@ -54,7 +53,6 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-    "nothing to see!"
         val body = ({
       val str = parsedBody match {
         case e: JValue => e
@@ -64,7 +62,7 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
         case e: Meetup => e
         case _ => halt(400)}
     })
-    Profile("meetup/ (post)", MeetupApiService.addMeetup(body), true)
+    MeetupApiService.addMeetup(body)
   }
 
   get("/",
@@ -98,7 +96,6 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-    "nothing to see!"
         val title = StringDataType(params.contains("title") match {
       case true  => Some(params("title"))
       case false => None
@@ -111,7 +108,7 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       case true  => Some(params("active"))
       case false => None
     })
-    Profile("meetup/ (get)", MeetupApiService.findMeetups(title, tag, active), true)
+    MeetupApiService.findMeetups(title, tag, active)
   }
 }
 
