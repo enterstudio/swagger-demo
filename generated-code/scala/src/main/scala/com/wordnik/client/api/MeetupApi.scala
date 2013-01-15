@@ -13,7 +13,7 @@ class MeetupApi {
 
   def addMeetup (body: Meetup) = {
     // create path and map variables
-    val path = "/meetup".replaceAll("\\{format\\}","json")// query params
+    val path = "/meetup.{format}".replaceAll("\\{format\\}","json")// query params
     val queryParams = new HashMap[String, String]
     val headerParams = new HashMap[String, String]
 
@@ -34,7 +34,7 @@ class MeetupApi {
   }
   def findMeetups (title: String, tag: String, active: Boolean) : Option[List[Meetup]]= {
     // create path and map variables
-    val path = "/meetup".replaceAll("\\{format\\}","json")// query params
+    val path = "/meetup.{format}".replaceAll("\\{format\\}","json")// query params
     val queryParams = new HashMap[String, String]
     val headerParams = new HashMap[String, String]
 
