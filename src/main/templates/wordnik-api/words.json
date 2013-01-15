@@ -935,14 +935,14 @@
     },
     "DefinitionSearchResults":{
       "properties":{
+        "totalResults":{
+          "type":"int"
+        },
         "results":{
           "type":"Array",
           "items":{
             "$ref":"Definition"
           }
-        },
-        "totalResults":{
-          "type":"int"
         }
       },
       "id":"DefinitionSearchResults"

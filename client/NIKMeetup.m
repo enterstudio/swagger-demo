@@ -5,9 +5,11 @@
 
 -(id)title: (NSString*) title
     tags: (NSArray*) tags
+    active: (NSNumber*) active
 {
   _title = title;
   _tags = tags;
+  _active = active;
   return self;
 }
 
@@ -36,6 +38,7 @@
         else {
             _tags = [[NSArray alloc] init];
         }
+        _active = dict[@"active"]; 
         
 
     }
@@ -63,6 +66,7 @@
     else {
     if(_tags != nil) dict[@"tags"] = [(NIKSwaggerObject*)_tags asDictionary];
     }
+    if(_active != nil) dict[@"active"] = _active ;
     NSDictionary* output = [dict copy];
     return output;
 }

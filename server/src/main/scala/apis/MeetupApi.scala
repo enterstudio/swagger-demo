@@ -39,28 +39,6 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
     response.headers += ("Access-Control-Allow-Origin" -> "*")
   }
 
-  delete("/:name",
-    summary("removes a meetup"),
-    nickname("removeMeetup"),
-    responseClass("void"),
-    endpoint("{name}"),
-    notes("only if you really want to!"),
-    parameters(
-      Parameter(name = "name", 
-        description = "the meetup to remove",
-        dataType = DataType.String,
-        defaultValue = None,
-        paramType = ParamType.Path)
-      ))
-  {
-    // do something magic!
-    val name = StringDataType(params.contains("name") match {
-      case true  => params("name")
-      case false => halt(400)
-    })
-    Profile("meetup/:name (delete)", MeetupApiService.removeMeetup(name), true)
-  }
-
   post("/",
     summary("creates a meetup"),
     nickname("addMeetup"),
@@ -76,7 +54,8 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-    val body = ({
+    "nothing to see!"
+        val body = ({
       val str = parsedBody match {
         case e: JValue => e
         case _ => JNothing}
@@ -119,7 +98,8 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-    val title = StringDataType(params.contains("title") match {
+    "nothing to see!"
+        val title = StringDataType(params.contains("title") match {
       case true  => Some(params("title"))
       case false => None
     })
@@ -134,3 +114,4 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
     Profile("meetup/ (get)", MeetupApiService.findMeetups(title, tag, active), true)
   }
 }
+

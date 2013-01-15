@@ -1028,26 +1028,13 @@
     },
     "Example":{
       "properties":{
-        "id":{
-          "type":"long"
-        },
-        "exampleId":{
-          "type":"long"
-        },
-        "title":{
-          "type":"string"
-        },
-        "text":{
-          "type":"string"
-        },
-        "score":{
-          "type":"ScoredWord"
-        },
-        "sentence":{
-          "type":"Sentence"
-        },
         "word":{
-          "type":"string"
+          "type":"string",
+          "required":true
+        },
+        "documentId":{
+          "type":"long",
+          "required":true
         },
         "provider":{
           "type":"ContentProvider",
@@ -1057,15 +1044,32 @@
           "type":"int",
           "required":true
         },
-        "rating":{
-          "type":"float"
-        },
-        "documentId":{
-          "type":"long",
+        "text":{
+          "type":"string",
           "required":true
         },
+        "id":{
+          "type":"long"
+        },
+        "exampleId":{
+          "type":"long"
+        },
+        "title":{
+          "type":"string",
+          "description":"the title of the document containing the Example"
+        },
         "url":{
-          "type":"string"
+          "type":"string",
+          "description":"the URL of the document containing the Example"
+        },
+        "score":{
+          "type":"ScoredWord"
+        },
+        "sentence":{
+          "type":"Sentence"
+        },
+        "rating":{
+          "type":"float"
         }
       },
       "id":"Example"
@@ -1122,6 +1126,36 @@
     },
     "AudioFile":{
       "properties":{
+        "word":{
+          "type":"string",
+          "required":true
+        },
+        "description":{
+          "type":"string",
+          "required":true
+        },
+        "audioType":{
+          "type":"string",
+          "required":true
+        },
+        "attributionText":{
+          "type":"string"
+        },
+        "id":{
+          "type":"long"
+        },
+        "createdBy":{
+          "type":"string"
+        },
+        "createdAt":{
+          "type":"Date"
+        },
+        "duration":{
+          "type":"double"
+        },
+        "fileUrl":{
+          "type":"string"
+        },
         "attributionUrl":{
           "type":"string"
         },
@@ -1131,41 +1165,11 @@
         "voteCount":{
           "type":"int"
         },
-        "fileUrl":{
-          "type":"string"
-        },
-        "audioType":{
-          "type":"string",
-          "required":true
-        },
-        "id":{
-          "type":"long"
-        },
-        "duration":{
-          "type":"double"
-        },
-        "attributionText":{
-          "type":"string",
-          "required":true
-        },
-        "createdBy":{
-          "type":"string"
-        },
-        "description":{
-          "type":"string",
-          "required":true
-        },
-        "createdAt":{
-          "type":"Date"
-        },
         "voteWeightedAverage":{
           "type":"float"
         },
         "voteAverage":{
           "type":"float"
-        },
-        "word":{
-          "type":"string"
         }
       },
       "id":"AudioFile"
@@ -1173,7 +1177,8 @@
     "Bigram":{
       "properties":{
         "count":{
-          "type":"long"
+          "type":"long",
+          "required":true
         },
         "gram1":{
           "type":"string",
@@ -1243,16 +1248,36 @@
     },
     "Definition":{
       "properties":{
-        "extendedText":{
-          "type":"string"
-        },
-        "text":{
+        "word":{
           "type":"string",
           "required":true
         },
         "sourceDictionary":{
           "type":"string",
           "required":true
+        },
+        "sequence":{
+          "type":"string"
+        },
+        "seqString":{
+          "type":"string"
+        },
+        "partOfSpeech":{
+          "type":"string",
+          "required":true
+        },
+        "text":{
+          "type":"string",
+          "required":true
+        },
+        "extendedText":{
+          "type":"string"
+        },
+        "textProns":{
+          "type":"Array",
+          "items":{
+            "$ref":"TextPron"
+          }
         },
         "citations":{
           "type":"Array",
@@ -1275,43 +1300,23 @@
             "$ref":"ExampleUsage"
           }
         },
-        "attributionUrl":{
-          "type":"string"
-        },
-        "seqString":{
-          "type":"string"
-        },
-        "attributionText":{
-          "type":"string"
-        },
         "relatedWords":{
           "type":"Array",
           "items":{
             "$ref":"Related"
           }
         },
-        "sequence":{
+        "attributionText":{
           "type":"string"
         },
-        "word":{
-          "type":"string",
-          "required":true
+        "attributionUrl":{
+          "type":"string"
         },
         "notes":{
           "type":"Array",
           "items":{
             "$ref":"Note"
           }
-        },
-        "textProns":{
-          "type":"Array",
-          "items":{
-            "$ref":"TextPron"
-          }
-        },
-        "partOfSpeech":{
-          "type":"string",
-          "required":true
         }
       },
       "id":"Definition"

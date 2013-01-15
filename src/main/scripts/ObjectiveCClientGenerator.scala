@@ -3,7 +3,7 @@ import com.wordnik.swagger.codegen.BasicObjcGenerator
 object ObjcClientGenerator extends BasicObjcGenerator {
 	def main(args: Array[String]) = generateClient(args)
 
-	override def templateDir = "src/main/templates/client"
+	override def templateDir = "src/main/templates/objc-client"
   override def destinationDir = "client"
 
   // supporting classes
