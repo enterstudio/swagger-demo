@@ -53,16 +53,7 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-        val body = ({
-      val str = parsedBody match {
-        case e: JValue => e
-        case _ => JNothing}
-
-      str.extract[Meetup] match {
-        case e: Meetup => e
-        case _ => halt(400)}
-    })
-    MeetupApiService.addMeetup(body)
+      // disabled for now
   }
 
   get("/",
@@ -96,19 +87,7 @@ class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet
       ))
   {
     // do something magic!
-        val title = StringDataType(params.contains("title") match {
-      case true  => Some(params("title"))
-      case false => None
-    })
-    val tag = StringDataType(params.contains("tag") match {
-      case true  => Some(params("tag"))
-      case false => None
-    })
-    val active = BooleanDataType(params.contains("active") match {
-      case true  => Some(params("active"))
-      case false => None
-    })
-    MeetupApiService.findMeetups(title, tag, active)
+      // disabled for now
   }
 }
 
