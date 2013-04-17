@@ -8,86 +8,52 @@ import org.scalatra.{ TypedParamSupport, ScalatraServlet }
 import org.scalatra.swagger._
 import org.json4s._
 import org.json4s.JsonDSL._
-import org.scalatra.json.{JValueResult, NativeJsonSupport}
+import org.scalatra.json.{ JValueResult, JacksonJsonSupport }
 
 import scala.collection.JavaConverters._
 
 class MeetupApi (implicit val swagger: Swagger) extends ScalatraServlet 
-    with TypedParamSupport 
-    with NativeJsonSupport 
-    with JValueResult 
-    with SwaggerSupport
-    with SwaggerDatatypeConversionSupport {
+    with JacksonJsonSupport
+    with SwaggerSupport {
   protected implicit val jsonFormats: Formats = DefaultFormats
 
   protected val applicationDescription: String = "MeetupApi"
   override protected val applicationName: Option[String] = Some("meetup")
 
-  def swaggerToModel(cls: Class[_]) = {
-    val docObj = ApiPropertiesReader.read(cls)
-    val name = docObj.getName
-    val fields = for (field <- docObj.getFields.asScala.filter(d => d.paramType != null))
-      yield (field.name -> ModelField(field.name, field.notes, DataType(field.paramType)))
-
-    Model(name, name, fields.toMap)
-  }
-
-  models = Map(swaggerToModel(classOf[Meetup]))
   before() {
     contentType = formats("json")
     response.headers += ("Access-Control-Allow-Origin" -> "*")
   }
 
-  post("/",
-    summary("creates a meetup at a BASE event"),
-    nickname("addMeetup"),
-    responseClass("void"),
-    endpoint(""),
-    notes("you need to be authenticated to do this!"),
-    parameters(
-      Parameter(name = "body",
-        description = "the meetup to add",
-        dataType = DataType("Meetup"),
-        defaultValue = None,
-        paramType = ParamType.Body)
-      ))
-  {
-    // do something magic!
-      // disabled for now
+
+  val addMeetupOperation = (apiOperation[Unit]("addMeetup")
+      summary "creates a meetup at a BASE event"
+      parameters(
+        bodyParam[Meetup]("body").description(""))
+  )
+  
+
+  post("/",operation(addMeetupOperation)) {
+        
+    val body = parsedBody.extract[Meetup]
+    MeetupApiService.addMeetup(body)
   }
 
-  get("/",
-    summary("searches meetups"),
-    nickname("findMeetups"),
-    responseClass("List[Meetup]"),
-    endpoint(""),
-    notes("you will find great meetups here"),
-    parameters(
-      Parameter(name = "title", 
-        description = "title of meetup to search for",
-        paramType = ParamType.Query,
-        required = false,
-        allowMultiple = false,
-        defaultValue = None,
-        dataType = DataType("String"))
-      ,Parameter(name = "tag", 
-        description = "tag of meetup to search for",
-        paramType = ParamType.Query,
-        required = false,
-        allowMultiple = true,
-        defaultValue = None,
-        dataType = DataType("String"))
-      ,Parameter(name = "active", 
-        description = "searches for active meetups only",
-        paramType = ParamType.Query,
-        required = false,
-        allowMultiple = false,
-        allowableValues = AllowableValues(true,false),defaultValue = None,
-        dataType = DataType("Boolean"))
-      ))
-  {
-    // do something magic!
-      // disabled for now
+
+
+  val findMeetupsOperation = (apiOperation[List[Meetup]]("findMeetups")
+      summary "searches meetups"
+      parameters(
+        queryParam[String]("title").description("").optional,queryParam[String]("tag").description("").optional,queryParam[Boolean]("active").description("").optional)
+  )
+  
+
+  get("/",operation(findMeetupsOperation)) {
+        
+    val title = params.getAs[String]("title")
+    val tag = params.getAs[String]("tag")
+    val active = params.getAs[Boolean]("active")
+    MeetupApiService.findMeetups(title, tag, active)
   }
+
 }
-

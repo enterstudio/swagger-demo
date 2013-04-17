@@ -17,18 +17,24 @@ object MeetupApiService {
 	}
 
 	def findMeetups(title:Option[String], tags: Option[String], active: Option[Boolean]) = {
-		val o = ((title match {
-			case Some(s) => meetups.filter(_.title.startsWith(s)).toList
-			case _ => List.empty
-		}) ++ (tags match {
-			case Some(tag) => {
-				meetups.filter(m => {
-					m.tags.map(_.name).toSet.contains(tag)
-				})
-			}
-			case _ => List.empty
-		})).toList
 		
+		val o = if(title == None && tags == None) {
+			meetups
+		}
+		else {
+			((title match {
+				case Some(s) => meetups.filter(_.title.startsWith(s)).toList
+				case _ => List.empty
+			}) ++ (tags match {
+				case Some(tag) => {
+					meetups.filter(m => {
+						m.tags.map(_.name).toSet.contains(tag)
+					})
+				}
+				case _ => List.empty
+			})).toList
+		}
+
 		active match {
 			case Some(a) => o.filter(_.active == a)
 			case _ => o

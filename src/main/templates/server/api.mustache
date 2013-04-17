@@ -2,6 +2,7 @@ package {{package}}
 
 {{#imports}}import {{import}}
 {{/imports}}
+
 import services._
 import com.wordnik.swagger.core.ApiPropertiesReader
 
@@ -9,33 +10,17 @@ import org.scalatra.{ TypedParamSupport, ScalatraServlet }
 import org.scalatra.swagger._
 import org.json4s._
 import org.json4s.JsonDSL._
-import org.scalatra.json.{JValueResult, NativeJsonSupport}
+import org.scalatra.json.{ JValueResult, JacksonJsonSupport }
 
 import scala.collection.JavaConverters._
 
 class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet 
-    with TypedParamSupport 
-    with NativeJsonSupport 
-    with JValueResult 
-    with SwaggerSupport
-    with SwaggerDatatypeConversionSupport {
+    with JacksonJsonSupport
+    with SwaggerSupport {
   protected implicit val jsonFormats: Formats = DefaultFormats
 
   protected val applicationDescription: String = "{{className}}"
   override protected val applicationName: Option[String] = Some("{{baseName}}")
-
-  def swaggerToModel(cls: Class[_]) = {
-    val docObj = ApiPropertiesReader.read(cls)
-    val name = docObj.getName
-    val fields = for (field <- docObj.getFields.asScala.filter(d => d.paramType != null))
-      yield (field.name -> ModelField(field.name, field.notes, DataType(field.paramType)))
-
-    Model(name, name, fields.toMap)
-  }
-
-  {{#requiredModels}}
-  models = Map(swaggerToModel(classOf[{{name}}]))
-  {{/requiredModels}}
 
   before() {
     contentType = formats("json")
@@ -44,52 +29,32 @@ class {{className}} (implicit val swagger: Swagger) extends ScalatraServlet
 {{#operations}}
 {{#operation}}
   {{newline}}
-  {{httpMethod}}("{{path}}",
-    summary("{{{summary}}}"),
-    nickname("{{nickname}}"),
-    responseClass("{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}void{{/returnType}}"),
-    endpoint("{{basePart}}"),
-    notes("{{{notes}}}"),
-    parameters(
-      {{#allParams}}
-      {{#queryParameter}}
-      Parameter(name = "{{paramName}}", 
-        description = "{{{description}}}",
-        paramType = ParamType.Query,
-        required = {{required}},
-        allowMultiple = {{allowMultiple}},
-        {{#allowableValues}}allowableValues = {{{allowableValues}}},{{newline}}{{/allowableValues}}
-        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
-        dataType = DataType("{{dataType}}"))
-      {{/queryParameter}}
-      {{#pathParameter}}
-      Parameter(name = "{{paramName}}", 
-        description = "{{{description}}}",
-        required = true,
-        dataType = DataType.String,
-        {{#allowableValues}}allowableValues = {{{allowableValues}}},{{newline}}{{/allowableValues}}
-        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
-        paramType = ParamType.Path)
-      {{/pathParameter}}
-      {{#headerParameter}}
-      Parameter(name = "{{paramName}}",
-        description = "{{{description}}}",
-        dataType = DataType("{{dataType}}"),
-        paramType = ParamType.Header)
-      {{/headerParameter}}
-      {{#bodyParameter}}
-      Parameter(name = "{{paramName}}",
-        description = "{{{description}}}",
-        dataType = DataType("{{dataType}}"),
-        defaultValue = {{#defaultValue}}Some({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}None{{/defaultValue}},
-        paramType = ParamType.Body)
-      {{/bodyParameter}}{{#hasMore}},{{/hasMore}}
-      {{/allParams}}
-      ))
-  {
-    // do something magic!
-    {{! >service_call}}
+
+  val {{nickname}}Operation = (apiOperation[{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}Unit{{/returnType}}]("{{nickname}}")
+      summary "{{{summary}}}"
+      parameters(
+        {{#allParams}}
+        {{#queryParameter}}
+        queryParam[{{dataType}}]("{{paramName}}").description(""){{#notRequired}}.optional{{/notRequired}}{{#defaultValue}}.defaultValue({{{defaultValue}}}){{/defaultValue}}
+        {{/queryParameter}}
+        {{#pathParameter}}
+        pathParam[{{dataType}}]("{{paramName}}").description(""){{#defaultValue}}.defaultValue({{{defaultValue}}}){{/defaultValue}}
+        {{/pathParameter}}
+        {{#headerParameter}}
+        headerParam[{{dataType}}]("{{paramName}}").description(""){{#notRequired}}.optional{{/notRequired}}{{#defaultValue}}.defaultValue({{{defaultValue}}}){{/defaultValue}}
+        {{/headerParameter}}
+        {{#bodyParameter}}
+        bodyParam[{{dataType}}]("{{paramName}}").description(""){{#notRequired}}.optional{{/notRequired}}{{#defaultValue}}.defaultValue({{{defaultValue}}}){{/defaultValue}}
+        {{/bodyParameter}}
+        {{#hasMore}},{{/hasMore}}
+        {{/allParams}})
+  )
+  
+
+  {{httpMethod}}("{{path}}",operation({{nickname}}Operation)) {
+    {{>service_call}}
   }
+
 {{/operation}}
 {{/operations}}
 }

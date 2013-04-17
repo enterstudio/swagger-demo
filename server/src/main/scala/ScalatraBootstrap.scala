@@ -9,7 +9,7 @@ class ScalatraBootstrap extends LifeCycle {
   override def init(context: ServletContext) {
     try {
       context mount (new MeetupApi, "/meetup/*")
-      context mount (new ResourcesApp, "/*")
+      context mount (new ResourcesApp, "/api-docs/*")
     } catch {
       case e: Throwable => e.printStackTrace()
     }

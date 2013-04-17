@@ -1,34 +1,21 @@
+    {{newline}}
     {{#allParams}}
-    val {{paramName}} = {{#bodyParameter}}({
-      val str = parsedBody match {
-        case e: JValue => e
-        case _ => {{#defaultValue}}parse({{{defaultValue}}}){{/defaultValue}}{{^defaultValue}}JNothing{{/defaultValue}}
-      }
-
-      str.extract[{{dataType}}] match {
-        case e: {{dataType}} => {{#notRequired}}Some({{/notRequired}}e{{#notRequired}}){{/notRequired}}{{newline}}
-        case _ => {{#notRequired}}None{{/notRequired}}{{^notRequired}}halt(400){{/notRequired}}
-      }
-    {{/bodyParameter}}
-
-    {{#queryParameter}}
-      {{dataType}}DataType(params.contains("{{{paramName}}}") match {
-      case true  => {{#notRequired}}Some({{/notRequired}}params("{{{paramName}}}"){{#notRequired}}){{/notRequired}}{{newline}}
-      case false => {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}{{#notRequired}}None{{/notRequired}}{{^notRequired}}halt(400){{/notRequired}}{{/defaultValue}}{{newline}}
-    {{/queryParameter}}
-
     {{#pathParameter}}
-      {{dataType}}DataType(params.contains("{{{paramName}}}") match {
-      case true  => {{#notRequired}}Some({{/notRequired}}params("{{{paramName}}}"){{#notRequired}}){{/notRequired}}{{newline}}
-      case false => {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}{{#notRequired}}None{{/notRequired}}{{^notRequired}}halt(400){{/notRequired}}{{/defaultValue}}{{newline}}
+      val {{paramName}} = params.getOrElse("{{paramName}}", halt(400))
     {{/pathParameter}}
 
+    {{#queryParameter}}
+      val {{paramName}} = params.getAs[{{dataType}}]("{{paramName}}")
+    {{/queryParameter}}
+
     {{#headerParameter}}
-      {{dataType}}DataType(params.contains("{{{paramName}}}") match {
-      case true  => {{#notRequired}}Some({{/notRequired}}params("{{{paramName}}}"){{#notRequired}}){{/notRequired}}{{newline}}
-      case false => {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}{{#notRequired}}None{{/notRequired}}{{^notRequired}}halt(400){{/notRequired}}{{/defaultValue}}{{newline}}
+      val {{paramName}} = request.getHeader("{{paramName}}")
     {{/headerParameter}}
-    })
+
+    {{#bodyParameter}}
+      val {{paramName}} = parsedBody.extract[{{dataType}}]
+    {{/bodyParameter}}
     {{/allParams}}
+
 
     {{className}}Service.{{nickname}}({{#allParams}}{{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
